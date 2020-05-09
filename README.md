@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -519,3 +520,7 @@ Seoul, South Korea 06221</p>
         <script src="js/scripts.js"></script>
     </body>
 </html>
+=======
+Hi!
+I'm pre Bixby Devloper
+>>>>>>> a86435c06b0c41e71b75a69350479aa86c1418ed
