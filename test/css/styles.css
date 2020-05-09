@@ -7034,6 +7034,9 @@ button.bg-dark:focus {
 a.text-primary:hover, a.text-primary:focus {
   color: #003866 !important; }
 
+.text-black{
+  color: black;}
+
 .text-secondary {
   color: #02284b !important; }
 
