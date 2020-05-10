@@ -970,6 +970,9 @@ pre {
   .col-lg-8 {
     flex: 0 0 66.6666666667%;
     max-width: 66.6666666667%; }
+  .col-lg-81{
+    margin-left:20px;
+    max-width: 100%; }
   .col-lg-9 {
     flex: 0 0 75%;
     max-width: 75%; }
