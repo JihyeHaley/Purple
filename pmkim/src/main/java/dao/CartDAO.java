@@ -73,7 +73,7 @@ public class CartDAO {
 		return list;
 	}
 	
-	//paging
+	//paging(sort)
 	public int listCount(String event_name, String shop_code) {
 		int count = 0;
 		String statement = "resource.CartMapper.listCount";
@@ -150,12 +150,11 @@ public class CartDAO {
 	}
 	
 	//ctg_3에 따른 추천 상품 정보
-	public List<GoodsInformVO> recomGoodsList(String ctg_3,int min, int max){
+	public List<GoodsInformVO> recomGoodsList(String ctg_3, int max){
 		List<GoodsInformVO> list = new ArrayList<>();
 		String statement = "resource.CartMapper.recommendGoods";
 		Map<String, Object> map = new HashMap<>();
 		map.put("ctg_3",ctg_3);
-		map.put("min",min);
 		map.put("max",max);
 		list = session.selectList(statement,map);
 		return list;
@@ -184,4 +183,58 @@ public class CartDAO {
 		return list;
 	}
 	
+	//2020.05.29 추가
+	//상품검색_paging
+	public List<GoodsEventShopMemberVO> searchGoodsPaging(String keyword, int startNum, int endNum){
+		List<GoodsEventShopMemberVO> list = new ArrayList<>();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("startNum",startNum);
+		map.put("endNum", endNum);
+		map.put("keyword", keyword);
+		String statement = "resource.CartMapper.goodsList_search_paging";
+		list = session.selectList(statement,map);
+		return list;
+	}
+	
+	//paging (search)
+	public int listCount2(String keyword) {
+		int count = 0;
+		String statement = "resource.CartMapper.listCount_search";
+		if(session.selectOne(statement)!=null) {
+			count = session.selectOne(statement,keyword);
+		}else {
+			System.out.println("null이에유");
+		}
+		return count;
+	}
+	
+	//2020.05.30 추가
+	public List<GoodsInformVO> selectCtg_3(String ctg_3,String shop_name){
+		List<GoodsInformVO> list = new ArrayList<>();
+		String statement = "resource.CartMapper.selectCtg_3";
+		Map <String, String> map = new HashMap<>();
+		map.put("ctg_3", ctg_3);
+		map.put("shop_name", shop_name);
+		list = session.selectList(statement,map);
+		return list;
+	}
+	
+	//2020.05.31추가
+	public String price(String good_id) {
+		String statement = "resource.CartMapper.goodPrice";
+		GoodsInformVO vo = new GoodsInformVO();
+		vo = session.selectOne(statement, good_id);
+		return vo.getGood_price();
+	}
+	
+	//2020.06.01 추가
+	public List<GoodsInformVO> selectCtg_2(String ctg_2,String shop_name){
+		List<GoodsInformVO> list = new ArrayList<>();
+		String statement = "resource.CartMapper.selectCtg_2";
+		Map <String, String> map = new HashMap<>();
+		map.put("ctg_2", ctg_2);
+		map.put("shop_name", shop_name);
+		list = session.selectList(statement,map);
+		return list;
+	}
 }

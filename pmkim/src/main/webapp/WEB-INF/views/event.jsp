@@ -21,13 +21,17 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
 
     
     <!-- Site Icons -->
-	<link rel="icon" type="image/png" sizes="16x16" href="/pmkim/resources/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="/pmkim/resources/images/apple-touch-icon.png">
+	<!-- <link rel="icon"  href="/pmkim/resources/images/pmkim.ico" type="image/x-icon" sizes="16x16" > -->
+	<link rel="icon" href="/pmkim/resources/images/pmkim.png"  type="image/png" sizes="16X16">
+    
+     <!--  Fonts -->
+	<link rel="stylesheet" href= '//cdn.rawgit.com/young-ha/webfont-archive/master/css/Youth.css' type='text/css'>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/pmkim/resources/css/bootstrap.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="/pmkim/resources/css/style_event.css">
+    <link rel="stylesheet" href="/pmkim/resources/css/style_nav.css">
     <link rel="stylesheet" href="/pmkim/resources/css/footerus.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="/pmkim/resources/css/responsive.css">
@@ -60,52 +64,31 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="index.html"><img src="/pmkim/resources/images/pmkim_Logo_1.jpg" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="/pmkim/home"><img src="/pmkim/resources/images/pmkim_Logo_1.jpg" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" href="/pmkim/main">Home</a></li> <!-- href는 jsp/html 형식이 아닌, {/매핑명}으로  해주시면돼용! 나중에 고쳐주세요~ -->
-                        <li class="nav-item"><a class="nav-link" href="/pmkim/map">지도</a></li> <!--성진오빠파트-->
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">테마</a><!-- 세호오빠가 원하는 li에다가 href해주세요!-->
-                            <ul class="dropdown-menu">
-								<li><a href="shop.html">Sidebar Shop</a></li>
-								<li><a href="shop-detail.html">Shop Detail</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item active"><a class="nav-link" href="/pmkim/home">Home</a></li> <!-- href는 jsp/html 형식이 아닌, {/매핑명}으로  해주시면돼용! 나중에 고쳐주세요~ -->
+                        <li class="nav-item active"><a class="nav-link" href="/pmkim/map">지도</a></li> <!--성진오빠파트-->
+                        <li class="nav-item active"><a class="nav-link" href="/pmkim/theme">테마</a></li> <!-- 세호-->
                         <li class="nav-item active"><a class="nav-link" href="/pmkim/event">행사</a></li> <!-- 지혜파트-->
-                        <li class="nav-item"><a class="nav-link" href="mycart.jsp">장바구니</a></li> <!-- 규영언니파트♡ -->
+                        <li class="nav-item active"><a class="nav-link" href="/pmkim/cart">만원의 행복</a></li> <!-- 규영언니파트♡ -->
                     </ul>
                 </div>
+            </div>
         </nav>
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
 
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-
     <!-- Start Gallery  -->
     <div class="products-box2">
     
         <div class="container">
-            <div class=""row>
+            <div class="row">
                 <div class="col-lg-12"><br><br><br>
                     <div class="title-all text-center">
                         <h1>행사상품</h1>
@@ -118,13 +101,12 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
             	<form action="/pmkim/event" method="get">
             		<input type="hidden" name="action" value = "search">	
 					<input class="form-control" name="good_name" placeholder="상품을 검색해보세요" type="text">
-					<button type="submit"><i class="fa fa-search"></i></button>
+					<button type="submit"><i><img src="/pmkim/resources/images/search.png" class="search-size"></i></button>
 				</form>
 			</div>
 			
           
             <div class="row">
-            	
                 <div class="col-lg-12">
                     <div class="special-menu text-center">
                     	<form method="GET" action="/pmkim/event">
@@ -132,31 +114,33 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
                         		<input type="hidden" name= "action" value="sort"><br>
 								<div class="button-group filter-button-group">    	
 									<label for ="shop_code">편의점</label><br>
-										<select id= "shop_code" name="shop_code" class ="event-button" onchange="myFunction1()">
-											<option value='CU' selected>-- 선택 --</option>
-											<option label="CU" value="CU">CU</option>
-											<option label="GS" value="GS">GS25</option>
-											<option label="MS" value="MS">미니스톱</option>
-											<option label="SE" value="SE">세븐일레븐</option>
-											<option label="EM" value="EM">emart24</option>
+										<select id= "shop_code" name="shop_code" class ="selectpicker show-tick form-control2" >
+											
+											<option value="CU" >CU</option>
+											<option value="GS">GS25</option>
+											<option value="MS">미니스톱</option>
+											<option value="SE">세븐일레븐</option>
+											<option value="EM">emart24</option>
 										</select>
+									
 								</div>
 								
 								
 								<div class="button-group filter-button-group">
 									<label for ="event_name">행사종류</label><br>
-										<select id="event_name" name="event_name" class ="event-button" onchange="myFunction2()">
-											<option value='1+1' selected>-- 선택 --</option>
+										<select id="event_name" name="event_name" class ="selectpicker show-tick form-control2" >
+											
 											<option value="1+1">1+1</option>
 											<option value="2+1">2+1</option>
 											<option value="PB">PB</option>
 										</select>
+										
 		                        </div>
 
 								<div class="button-group filter-button-group">
 									<label for ="ctg_1">카테고리</label><br>
-										<select id="ctg_1" name="ctg_1" class ="event-button" onchange="myFunction3()">
-											<option value='식품' selected>-- 선택 --</option>
+										<select id="ctg_1" name="ctg_1" class ="selectpicker show-tick form-control2" >
+											
 											<option value="식품">식품</option>
 											<option value="패션의류">패션의류</option>
 											<option value="패션잡화">패션잡화</option>
@@ -170,20 +154,65 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
 											<option value="생활/건강">생활/건강</option>
 											<option value="기타">기타</option>
 										</select>
+										
 								</div> 
 								
-		                        <button type="submit">
-										<i class="fa fa-search"></i>
+		                        <button type="submit" >
+										<i><img src="/pmkim/resources/images/search.png" class="search-size"></i>
 								</button>
+								
+									
 
-		                        <br><br><a id="demo1"></a> <a id="demo2"></a> <a id="demo3"></a>
+
+		                        <br><br>
+		                        <div class= "result-text">
+		                        	<a id="demo1"><%-- 편의점 :${param.shop_code } --%></a> 
+		                        	<a id="demo2"><%-- 행사종류 :${param.event_name } --%></a> 
+		                        	<a id="demo3"><%-- 카테고리 :${param.ctg_1 } --%></a><br>
+		                        	<a id="demo1_img"></a>
+		                        </div>
                          	</div>
                          </form>
 					</div>   
                 </div>
             </div>
+		</div>
+		<script>
+								    
+			var shop_code_f1;
+			var f1 = '${param.shop_code}';
+			var f2 = '${param.event_name}';
+			var f3 = '${param.ctg_1}';
+
+			window.onload = function() {
+				if (f1) {
+					var dom1 = document
+							.querySelector("#shop_code>option[value=" + f1
+									+ "]");
+					dom1.setAttribute("selected", "");
+				} else if (f2) {
+					var dom2 = document
+							.querySelector("#event_name>option[value=" + f2
+									+ "]");
+					dom2.setAttribute("selected", "");
+				} else if (f3) {
+					var dom3 = document.querySelector("#ctg_1>option[value="
+							+ f3 + "]");
+					dom3.setAttribute("selected", "");
+				}
+			}
+
+			window.onclick = function(){
+				document.getElementById("demo1").innerHTML = "편의점: " + f1 + "     ";
+				document.getElementById("demo2").innerHTML = "이벤트 종류: " + f2 + "     ";
+				document.getElementById("demo3").innerHTML = "카테고리: " + f3 + "     ";
+			}
+				
 			
-           <div class="row special-list">
+		</script>
+
+
+		<div class="row special-list">
 			 <c:forEach var="vo" items="${gesList}">
                 <div class="col-lg-3 col-md-6 special-grid bulbs">
                     <div class="products-single fix">
@@ -191,7 +220,7 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
                             <div class="type-lb">
                                 <p class="sale">${vo.shop_name} ${vo.event_name}</p> <!-- FROM EVENT --> 
                             </div>
-                            <img src="${vo.good_img}" class="img-fluid" alt="Image"> <!-- FROM GOODS -->
+                            <img src="${vo.good_img}" style="height:350px; margin-top:30px;"class="img-fluid" alt="Image"> <!-- FROM GOODS -->
                         </div>
                         <div class="why-text">
                             <h3>${vo.good_name}</h3> <!-- FROM GOODS -->
@@ -207,78 +236,85 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
         	<div id="paging" style="text-align : center; font-size : 16pt;" >
         			<input type="hidden" name= "action" value="sort">
 					<c:if test="${ preData }">
-						<%-- <a href ="/pmkim/event?pgNum=1${ oldQ }&action=sort&shop_code=${shop_code}&event_name=${event_name}"> &laquo; </a> --%>
-						 <a href ="/pmkim/event?pgNum=1${ oldQ }"> &laquo; </a>  
-						<%-- <a href = "/pmkim/event?pgNum=${ pgNum - 1 }${ oldQ }&action=sort&shop_code=${shop_code}&event_name=${event_name}"> &nbsp; &lt; &nbsp;</a>--%>
-						<a href = "/pmkim/event?pgNum=${ pgNum - 1 }${ oldQ }"> &nbsp; &lt; &nbsp;</a> --%>
+						<a href ="/pmkim/event?pgNum=1${ oldQ }"> &laquo; </a>  
+						<a href = "/pmkim/event?pgNum=${ pgNum - 1 }${ oldQ }"> &nbsp; &lt; &nbsp;</a>
 					</c:if>
 								
 					<c:forEach var="num" begin="${ pageStart }" end="${ pageEnd }">
-						<%-- <a href = "/pmkim/event?pgNum=${ num }${ oldQ }&action=sort&shop_code=${shop_code}&event_name=${event_name}">${ num } &nbsp;</a>  --%>
 						<a href = "/pmkim/event?pgNum=${ num }${ oldQ }">${ num } &nbsp;</a>
 					</c:forEach>
 								
 					<c:if test="${ nextData }">
-						<%-- <a href = "/pmkim/event?&pgNum=${ pgNum + 1 }${ oldQ }&action=sort&shop_code=${shop_code}&event_name=${event_name}"> &gt; &nbsp;</a>--%>
 						<a href = "/pmkim/event?&pgNum=${ pgNum + 1 }${ oldQ }"> &gt; &nbsp;</a> 
-					</c:if>
-								
+					</c:if>	
 					<c:if test = "${ pgNum != end }">
-						<%-- <a href ="/pmkim/event?pgNum=${ end }${ oldQ }&action=sort&shop_code=${shop_code}&event_name=${event_name}"> &raquo; </a>--%>
 						<a href ="/pmkim/event?pgNum=${ end }${ oldQ }"> &raquo; </a> 
 					</c:if>
 			</div>
-			
-		</div>
-		
-    </div>
+	</div>
+
     <!-- End Gallery  -->
 
     <!-- 20200521_oliver.yoo -->
 	<!-- Start Footer  -->
 	<footer>
 		<div class="footer-main">
-			<div class="container">
+			<div class="container3">
 				<div class="row">
-
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-top-box">
 							<h3>챗봇(Coming Soon)</h3>
-
 						</div>
 					</div>
-
 				</div>
-				<hr>
+				<br><br>
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12">
+						<div class="footer-top-box">
+							<h3>We are One ; 곰돌이 감자 </h3>
+						</div>
+					</div>
+				</div>
 
 				<div class="container text-centers">
 					<div class="row">
 						<!-- Footer 1-->
 						<div class="col-lg-422 mb-5 mb-lg-0">
-							<a><img src="/pmkim/resources/images/haley.png" class="profile"  alt="" /></a>
-						<h2>Haley Oh</h2>
-						<a href="https://github.com/JihyeHaley"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/></a> 
+							<a><img src="/pmkim/resources/images/haley.png" class="profile"  alt="" /></a><br>
+							<a href="https://github.com/JihyeHaley" class="result-text"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/>Haley Oh</a><br>
+							<a class="result-text">You know? I'm 팀장4;)</a><br>
+						<a class= "profile-text">has kinda professional language skills English, Chinese, Japanese. Currently working and studying for full-stack developing skills</a>
+						
 						</div>
 
 						<!-- Footer 2-->
 						<div class="col-lg-422 mb-5 mb-lg-0">
-							<a><img src="/pmkim/resources/images/seho.png" class="profile"   alt="" /></a>
-						<h2>Seho Oh </h2>
-						<a href="https://github.com/sehooh5"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/></a> 
+							<a><img src="/pmkim/resources/images/seho.png" class="profile"   alt="" /></a><br>
+							<a href="https://github.com/sehooh5"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/></a>
+							<a class="result-text">Seho Oh </a><br>
+							<a class="result-text">You know? I'm 팀장1;)</a><br>
+							<a class= "profile-text">is one of the treasurous in gomgam since he has professional analysis skills based on R selenium. His main major was Design. Amazing!</a>
+						
 						</div>
 
 						<!-- Footer 3-->
 						<div class="col-lg-422 mb-5 mb-lg-0">
-							<a><img src="/pmkim/resources/images/linda.png" class="profile" alt="" /></a>
-							<h2>Linda Eom </h2>
+							<a><img src="/pmkim/resources/images/linda.png" class="profile" alt="" /></a><br>
 							<a href="https://github.com/GyuyoungEom"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/></a>
+							<a class="result-text">Linda Eom </a><br>
+							<a class="result-text">You know? I'm 팀장3;)</a><br>
+							<a class= "profile-text">without her, this work could not be achieved... haha He is superwomen among us. Her diction is based on Austrailia, and she is familiar at super power on everything..!!!! </a>
 						</div>
 
 						<!-- Footer 4-->
 						<div class="col-lg-422 mb-5 mb-lg-0">
-							<a><img src="/pmkim/resources/images/oliver.png" class="profile"  /></a>
-							<h2>Oliver Yoo </h2>
+							<a><img src="/pmkim/resources/images/oliver.png" class="profile"  /></a><br>
 							<a href="https://github.com/SeongjinOliver"><img src="/pmkim/resources/images/gitprof.png" class="git_img"/></a>
+							<a class="result-text">Oliver Yoo </a><br>
+							<a class="result-text">You know? I'm 팀장1;)</a><br>
+							<a class= "profile-text">is amazing man because he is familiar with back-frond end, DB, Spring, and Java, C... Cannot count all LOL. Surprise thing is he is even studying himself at every night despite project season :)</a>
+							
+							
 						</div>
 					</div>
 				</div>
@@ -298,13 +334,12 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
 					<div class="col-lg-4 col-md-12 col-sm-12">
 						<div class="footer-link">
 							<h4>Information</h4>
-							<ul>
-								<li><a href="#/pmkim/main">HOME</a></li>
+							<ul class="result-text">
+								<li><a href="#/pmkim/home" >HOME</a></li>
 								<li><a href="#/pmkim/map">지도</a></li>
 								<li><a href="#/pmkim/theme">테마</a></li>
 								<li><a href="#/pmkim/event">행사</a></li>
 								<li><a href="#/pmkim/cart">장바구니</a></li>
-								<li><a href="#/pmkim/mypage">마이페이지</a></li>
 							</ul>
 						</div>
 					</div>
@@ -338,6 +373,13 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
 		</div>
 	</footer>
 	<!-- End Footer  -->
+	<!-- Start copyright  -->
+	<div class="footer-copyright">
+		<p class="footer-company">
+			All Rights Jihye Oh. &copy; 2020 <a href="#">PM, KIM</a> Design By GomGam
+		</p>
+	</div>
+	<!-- End copyright  -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
@@ -358,58 +400,10 @@ import="vo.GoodsVO, vo.CartVO, vo.EventVO, vo.MemberVO,vo.GoodsEventShopMemberVO
     <script src="/pmkim/resources/js/form-validator.min.js"></script>
     <script src="/pmkim/resources/js/contact-form-script.js"></script>
     <script src="/pmkim/resources/js/custom.js"></script>
-    
-    <script type="text/javascript">
-	    function myFunction1() {
-	    	  var x = document.getElementById("shop_code");
-	    	  var y = x.options[x.selectedIndex].value;
-	    	  var z = x.options[x.selectedIndex].text;
-	    }	  
-	    	  function myFunction2() {
-		    	  var x = document.getElementById("event_name");
-		    	  var y = x.options[x.selectedIndex].value;
-		    	  var z = x.options[x.selectedIndex].text;
-	    	  }	  
-	    	  function myFunction3() {
-		    	  var x = document.getElementById("ctg_1");
-		    	  var y = x.options[x.selectedIndex].value;
-		    	  var z = x.options[x.selectedIndex].text;
-	    	  }
-    </script>
-    <!-- <script>
-		function stay1(){
-			var itemidSelect=document.getElementById("shop");
-			
-			var itemID= itemidSelect.options[itemidSelect.selectedIndex].value;
-			console.log('itemID: '+itemID);
-			var itemName= itemidSelect.options[itemidSelect.selectedIndex].text;
-			console.log('itemName: '+itemName);
-		}
-		
-		function stay2(){
-			var itemidSelect=document.getElementById("event");
-			
-			var itemID= itemidSelect.options[itemidSelect.selectedIndex].value;
-			console.log('itemID: '+itemID);
-			var itemName= itemidSelect.options[itemidSelect.selectedIndex].text;
-			console.log('itemName: '+itemName);
-		}
-		
-		function stay3(){
-			var itemidSelect=document.getElementById("category");
-			
-			var itemID= itemidSelect.options[itemidSelect.selectedIndex].value;
-			console.log('itemID: '+itemID);
-			var itemName= itemidSelect.options[itemidSelect.selectedIndex].text;
-			console.log('itemName: '+itemName);
-		}
-	</script> -->
-    
+       
 </body>
 
 </html>
-</body>
 
-</html>>
 
-</html>
+
